@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Game Login</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial;
+  overflow: hidden;
+}
+
+/* MOVING BACKGROUND */
+body::before {
+  content: "";
+  position: fixed;
+  width: 110%;
+  height: 110%;
+  background: url('https://i.pinimg.com/1200x/0d/ad/a1/0dada1304d2febe68713b744d347d6de.jpg') no-repeat center center;
+  background-size: cover;
+  animation: moveBg 20s infinite alternate ease-in-out;
+  z-index: -2;
+}
+
+/* DARK OVERLAY */
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: -1;
+}
+
+@keyframes moveBg {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.1) translate(-20px, -20px); }
+}
+
+/* MAIN BOX */
+.container {
+  width: 800px;
+  height: 420px;
+  display: flex;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+}
+
+/* LEFT */
+.left {
+  width: 50%;
+  background: url('https://images.unsplash.com/photo-1713630019375-f483a9729a8b') no-repeat center center;
+  background-size: cover;
+  color: white;
+  padding: 30px;
+  position: relative;
+}
+
+.left::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  top: 0;
+  left: 0;
+}
+
+.left-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* RIGHT */
+.right {
+  width: 50%;
+  background: linear-gradient(to bottom right, #4facfe, #00f2fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FORM */
+.box {
+  text-align: center;
+  color: white;
+  width: 250px;
+}
+
+input {
+  display: block;
+  margin: 10px auto;
+  padding: 10px;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+}
+
+button.main-btn {
+  margin-top: 10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 20px;
+  border: none;
+  background: white;
+  color: #333;
+  cursor: pointer;
+}
+
+button.main-btn:hover {
+  background: #ddd;
+}
+
+.switch {
+  margin-top: 10px;
+  font-size: 13px;
+  cursor: pointer;
+  color: #eee;
+}
+
+.switch:hover {
+  color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- LEFT -->
+  <div class="left">
+    <div class="left-content">
+      <h1>3DM GAME</h1>
+      <p>You want most games in here</p>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="box">
+
+      <!-- LOGIN -->
+      <div id="loginForm">
+        <h2>Sign In</h2>
+
+        <input type="email" id="email" placeholder="Email ID" required>
+        <input type="password" id="password" placeholder="Password" required>
+
+        <button class="main-btn" onclick="login()">LOGIN</button>
+
+        <div class="switch" onclick="showSignup()">
+          Don't have account? Create one
+        </div>
+      </div>
+
+      <!-- SIGNUP -->
+      <div id="signupForm" style="display:none;">
+        <h2>Create Account</h2>
+
+        <input type="text" placeholder="Username" required>
+        <input type="email" placeholder="Email ID" required>
+        <input type="password" placeholder="Password" required>
+
+        <button class="main-btn">SIGN UP</button>
+
+        <div class="switch" onclick="showLogin()">
+          Already have account? Login
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+function showSignup(){
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("signupForm").style.display = "block";
+}
+
+function showLogin(){
+  document.getElementById("signupForm").style.display = "none";
+  document.getElementById("loginForm").style.display = "block";
+}
+
+/* LOGIN FUNCTION → REDIRECT */
+function login(){
+  let email = document.getElementById("email").value;
+  let password = document.getElementById("password").value;
+
+  if(email && password){
+    // redirect to next page
+    window.location.href = "https://poki.com/";  // 👉 create this file
+  } else {
+    alert("Enter Email & Password");
+  }
+}
+</script>
+
+</body>
+</html>
